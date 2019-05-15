@@ -1,0 +1,24 @@
+{
+  "name": "nsx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thuanvuong164999/NSX.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thuanvuong164999/NSX/issues"
+  },
+  "homepage": "https://github.com/thuanvuong164999/NSX#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
