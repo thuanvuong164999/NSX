@@ -1,0 +1,517 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.3
+-- Dumped by pg_dump version 11.3
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: categories; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.categories (
+    name character(100),
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.categories OWNER TO postgres;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.categories_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.categories_id_seq OWNER TO postgres;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.categories_id_seq OWNED BY public.categories.id;
+
+
+--
+-- Name: customers; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.customers (
+    name character(100),
+    gender character(100),
+    email text,
+    address text,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.customers OWNER TO postgres;
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.customers_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.customers_id_seq OWNER TO postgres;
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.customers_id_seq OWNED BY public.customers.id;
+
+
+--
+-- Name: farms; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.farms (
+    name character(50),
+    owner character(50),
+    address character(50),
+    phone integer,
+    product_id integer,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.farms OWNER TO postgres;
+
+--
+-- Name: farms_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.farms_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.farms_id_seq OWNER TO postgres;
+
+--
+-- Name: farms_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.farms_id_seq OWNED BY public.farms.id;
+
+
+--
+-- Name: products; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.products (
+    name character(100),
+    amount integer,
+    price integer,
+    description text,
+    brand_id integer,
+    category_id integer,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.products OWNER TO postgres;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.products_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.products_id_seq OWNER TO postgres;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.products_id_seq OWNED BY public.products.id;
+
+
+--
+-- Name: categories id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.categories ALTER COLUMN id SET DEFAULT nextval('public.categories_id_seq'::regclass);
+
+
+--
+-- Name: customers id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.customers ALTER COLUMN id SET DEFAULT nextval('public.customers_id_seq'::regclass);
+
+
+--
+-- Name: farms id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.farms ALTER COLUMN id SET DEFAULT nextval('public.farms_id_seq'::regclass);
+
+
+--
+-- Name: products id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products ALTER COLUMN id SET DEFAULT nextval('public.products_id_seq'::regclass);
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.categories (name, id) FROM stdin;
+rau                                                                                                 	1
+trai_cay                                                                                            	2
+ngu_coc                                                                                             	3
+\.
+
+
+--
+-- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.customers (name, gender, email, address, id) FROM stdin;
+Phoebe                                                                                              	Female                                                                                              	pmontague0@sciencedirect.com	217.175.194.88	1
+Jonathan                                                                                            	Male                                                                                                	johms1@theguardian.com	150.208.114.181	2
+Kali                                                                                                	Female                                                                                              	kbalam2@telegraph.co.uk	167.22.47.113	3
+Lavinie                                                                                             	Female                                                                                              	ljeanet3@i2i.jp	2.85.61.224	4
+Gabriel                                                                                             	Male                                                                                                	gkamen4@jugem.jp	153.1.144.70	5
+Olvan                                                                                               	Male                                                                                                	okachel5@newyorker.com	102.30.80.141	6
+Job                                                                                                 	Male                                                                                                	jdanahar6@imdb.com	99.145.130.137	7
+Yanaton                                                                                             	Male                                                                                                	ybittlestone7@apple.com	91.25.135.143	8
+Madelle                                                                                             	Female                                                                                              	mseys8@virginia.edu	4.187.253.217	9
+Basile                                                                                              	Male                                                                                                	bkubacek9@mysql.com	60.145.128.248	10
+Ermentrude                                                                                          	Female                                                                                              	emcmeekinga@skyrock.com	197.103.210.127	11
+Anallise                                                                                            	Female                                                                                              	aallibertonb@engadget.com	38.117.56.165	12
+Irving                                                                                              	Male                                                                                                	iissacoffc@hc360.com	146.242.146.149	13
+Odelia                                                                                              	Female                                                                                              	oyushachkovd@clickbank.net	210.9.235.46	14
+Jacinta                                                                                             	Female                                                                                              	jhammane@umich.edu	253.182.61.206	15
+Terrance                                                                                            	Male                                                                                                	tcissellf@studiopress.com	171.230.128.207	16
+Hannah                                                                                              	Female                                                                                              	hglandfieldg@cnet.com	237.150.91.251	17
+Benedetto                                                                                           	Male                                                                                                	bfursseh@meetup.com	49.207.232.121	18
+Alejoa                                                                                              	Male                                                                                                	abetjei@ow.ly	174.21.32.5	19
+Ebonee                                                                                              	Female                                                                                              	emaddickj@patch.com	85.135.182.186	20
+\.
+
+
+--
+-- Data for Name: farms; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.farms (name, owner, address, phone, product_id, id) FROM stdin;
+Niles Vockings                                    	Ripley Holsey                                     	61544 Commercial Pass                             	42	61	1
+Charline Cotton                                   	Joceline Elderbrant                               	89545 Commercial Drive                            	35	93	2
+Tommi Iacoboni                                    	Bernie Tembridge                                  	7 Morrow Park                                     	95	1	3
+Sarajane Reveland                                 	Heather Willey                                    	3598 Hanover Lane                                 	87	6	4
+Wendel Pummery                                    	Carma Spavins                                     	7 Bellgrove Point                                 	39	99	5
+Gilles Maven                                      	Chris Brabban                                     	6020 Westerfield Drive                            	15	16	6
+Lee Embra                                         	Erminie Jordi                                     	4498 Stephen Parkway                              	55	63	7
+Lilias Lowry                                      	Francene Riccard                                  	16 Orin Lane                                      	47	57	8
+Norah Duxbarry                                    	Tara Veld                                         	874 Burrows Parkway                               	31	123	9
+Iris Howcroft                                     	Anthia Ropartz                                    	83 Jenna Parkway                                  	50	10	10
+Dorri Crosseland                                  	Roxy Legion                                       	335 Barnett Crossing                              	32	8	11
+Alecia Allibon                                    	Darrell Rosenbloom                                	79541 Superior Trail                              	1	127	12
+Jodie De Ath                                      	Theo Iacovacci                                    	48372 Evergreen Drive                             	29	54	13
+Barnaby Teffrey                                   	Haze Rodgerson                                    	45565 Sommers Court                               	20	35	14
+Loise Neesham                                     	Tully Dutt                                        	00 Riverside Circle                               	74	108	15
+Yard Whitear                                      	Patric Houdhury                                   	07 Brown Crossing                                 	77	103	16
+Alexei Stubley                                    	Annabel Yakob                                     	9 Crowley Road                                    	52	76	17
+Taddeo Sare                                       	Immanuel Slobom                                   	5468 Buell Street                                 	68	40	18
+Mortimer Klais                                    	Robinia Eschalette                                	7738 Bultman Crossing                             	90	1	19
+Neddy Pierton                                     	Bobbye Cosans                                     	22 Vermont Road                                   	44	120	20
+Almeria Julian                                    	Otto Roalfe                                       	14 Bay Parkway                                    	64	87	21
+Lesley McLurg                                     	Durante Heyball                                   	75550 Fulton Plaza                                	32	121	22
+Rosa Rosling                                      	Jackson Sidsaff                                   	9 Muir Avenue                                     	39	17	23
+Dwain Anthill                                     	Dalton Treharne                                   	340 West Parkway                                  	89	64	24
+Kenton Timlett                                    	Barton Beards                                     	319 Moland Street                                 	46	26	25
+Dyanne Ramiro                                     	Erda Strass                                       	53 Anthes Plaza                                   	36	73	26
+Arnoldo Millions                                  	Moselle Di Bartolommeo                            	99828 Mccormick Plaza                             	81	123	27
+Marielle Peres                                    	Dalston Moggie                                    	66677 Autumn Leaf Place                           	94	54	28
+Odella Potten                                     	Bell Gostage                                      	9 Hoffman Road                                    	32	92	29
+Garnet Boagey                                     	Dari Moisey                                       	99 Ridgeview Hill                                 	63	62	30
+Giordano Ensley                                   	Phillipe Nealy                                    	359 Kensington Terrace                            	44	109	31
+Emile Jeal                                        	Sigvard Learmont                                  	0232 Northview Plaza                              	18	34	32
+Christyna Agutter                                 	Lynna McKain                                      	4 Fisk Court                                      	34	6	33
+Louis Lowndsborough                               	Tadeas Clandillon                                 	4 Bayside Lane                                    	3	72	34
+Antin Corkhill                                    	Caryn Reyne                                       	10 Dixon Place                                    	62	89	35
+Joline Greenin                                    	Larry Giorgioni                                   	26001 Washington Drive                            	18	102	36
+Hermine Lapwood                                   	Arlin Laneham                                     	93227 Sheridan Pass                               	46	125	37
+Dusty Jerche                                      	Hannis Brumbye                                    	8 Northland Place                                 	11	84	38
+Katharine Lofts                                   	Amye Geeritz                                      	10 David Road                                     	55	67	39
+Ophelia Phippen                                   	Brooks Wilcock                                    	61 Eastlawn Plaza                                 	90	103	40
+Tabb Sollom                                       	Sandi Kippin                                      	5 Sachtjen Street                                 	42	114	41
+Ophelia Cassey                                    	Jedidiah Juszczyk                                 	07 Ludington Parkway                              	62	90	42
+Jerry Tellwright                                  	Willi Tomasino                                    	15721 Butterfield Crossing                        	73	84	43
+Anastasie McQuilty                                	Fee Gregori                                       	23016 Prairie Rose Trail                          	28	117	44
+Yvonne Gillie                                     	Kiley Wills                                       	662 Clyde Gallagher Hill                          	25	29	45
+Elly Pietruszewicz                                	Wilmar Clubley                                    	1811 Nova Drive                                   	71	94	46
+Ira McEntegart                                    	Francoise Baverstock                              	8 Grayhawk Center                                 	52	112	47
+Traver Loveitt                                    	Hymie McCully                                     	4 Ruskin Lane                                     	39	9	48
+Zorana Wathey                                     	Cullin Hartfield                                  	02 Saint Paul Street                              	56	5	49
+Mirna Giacomelli                                  	Ginni Budcock                                     	88 Bultman Point                                  	52	75	50
+Blakelee Munkley                                  	Shepherd Gerrietz                                 	480 Straubel Parkway                              	83	106	51
+Esmeralda Burgin                                  	Sophronia Evill                                   	8 Division Street                                 	34	121	52
+Gar Esom                                          	Bevvy Swarbrick                                   	8644 Garrison Hill                                	73	29	53
+Helli Poolman                                     	Merissa Leyshon                                   	9593 Valley Edge Avenue                           	77	84	54
+Sara-ann Leacy                                    	Roger Scoone                                      	04059 High Crossing Pass                          	99	18	55
+Pippa Manvell                                     	Elliot Brisson                                    	34767 Truax Parkway                               	5	64	56
+Kiersten Enever                                   	Kerstin Misken                                    	90894 Hudson Junction                             	73	37	57
+Nola McIlwaine                                    	Rozelle Alfonsini                                 	5194 Comanche Hill                                	40	42	58
+Rivalee McVrone                                   	Rosalind Snawden                                  	662 Monterey Park                                 	76	81	59
+Jena Tonge                                        	Kerwin Odams                                      	6 Clyde Gallagher Parkway                         	91	50	60
+Auria De Marchi                                   	Nisse Jeppensen                                   	73289 Banding Place                               	30	109	61
+Clifford Heggie                                   	Cobbie Downie                                     	10898 Northridge Avenue                           	54	64	62
+Shelley Dumbelton                                 	Phylys Dewicke                                    	62 Shoshone Way                                   	73	73	63
+Ganny Gott                                        	Mara Whatman                                      	7221 Lakewood Way                                 	66	126	64
+Celle Scarlett                                    	Travus Lafferty                                   	71646 1st Alley                                   	53	97	65
+Corney Dispencer                                  	Sofia Huffy                                       	8682 Toban Plaza                                  	10	121	66
+Clevey Dunseath                                   	Mindy Incogna                                     	42 Myrtle Way                                     	54	93	67
+Carolee Sprigg                                    	Henka Lambol                                      	0819 Florence Road                                	30	98	68
+Othilia Bracco                                    	Kahaleel McGarahan                                	708 Annamark Avenue                               	41	22	69
+Roze Moffat                                       	Dasie Brownlee                                    	8 Amoth Alley                                     	47	76	70
+Clevey Nye                                        	Del Fotheringham                                  	38 Sundown Road                                   	81	19	71
+Odessa Zelland                                    	Shannon Dowling                                   	0 Debs Trail                                      	17	67	72
+Helaina Cejka                                     	Lou Milroy                                        	93 Village Place                                  	14	63	73
+Marja Vicker                                      	Ronnie Quaif                                      	885 Di Loreto Parkway                             	38	123	74
+Marsiella Crumb                                   	Lindsay Van Oord                                  	7801 Union Alley                                  	81	107	75
+Margarette Snowsill                               	Aggie Tollow                                      	9 Rusk Alley                                      	96	98	76
+Jorie Posnett                                     	Danit Bloxham                                     	21 Armistice Road                                 	98	1	77
+Miles Cotterill                                   	Shelton Roscrigg                                  	162 Sycamore Street                               	67	82	78
+Dale Moverley                                     	Maison Biggerdike                                 	7 Drewry Road                                     	40	48	79
+Kesley Brogini                                    	Cornie Hamel                                      	8 5th Hill                                        	38	5	80
+Dorothy Dowderswell                               	Abra Lawful                                       	64791 Laurel Road                                 	15	32	81
+Claudette Stebbin                                 	Iain Ambroziak                                    	5507 Derek Parkway                                	33	94	82
+Shem Furnival                                     	Augy Inott                                        	34256 Roxbury Circle                              	27	37	83
+Alwyn Gislebert                                   	Genni Nyland                                      	467 Melrose Drive                                 	92	90	84
+Dana Albert                                       	Shirline Halloway                                 	35285 Brickson Park Court                         	68	124	85
+Adelind Rae                                       	Belva O'Duane                                     	8833 Becker Avenue                                	87	86	86
+Tine Cesconi                                      	Barbey Rozenbaum                                  	818 Cherokee Street                               	55	59	87
+Hollis Ife                                        	Ethelbert Heardman                                	716 Troy Road                                     	94	106	88
+Winifield Cheves                                  	Alvis Snell                                       	7484 Thackeray Junction                           	99	10	89
+Leann Pioch                                       	Dorene McDell                                     	03 Iowa Point                                     	56	103	90
+Marcie Chandler                                   	Angelico Purches                                  	950 Barnett Junction                              	80	65	91
+Man Weatherburn                                   	Yanaton Cowup                                     	29 Sugar Hill                                     	99	47	92
+Avis Marke                                        	Bryn Chatainier                                   	26 Golf Way                                       	62	18	93
+Marleen McAughtry                                 	Stefa Pettiward                                   	20 Rockefeller Circle                             	69	111	94
+Abigail Saer                                      	Giorgio Grube                                     	57938 Morrow Lane                                 	38	75	95
+Bertrand Wittering                                	Marjy Hessel                                      	3167 Eggendart Road                               	53	107	96
+Fair Vischi                                       	Belinda Faulder                                   	9 Mendota Parkway                                 	97	121	97
+Sinclare Doddrell                                 	Mill Tarbatt                                      	59961 Crest Line Pass                             	100	111	98
+Tana Davitti                                      	Augustina Demongeot                               	2 Hansons Road                                    	71	39	99
+Tania Rockcliffe                                  	Tanner Puttock                                    	69029 New Castle Junction                         	95	15	100
+\.
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.products (name, amount, price, description, brand_id, category_id, id) FROM stdin;
+Mariele Redsall                                                                                     	48	49	integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices	\N	2	1
+Shirleen Galilee                                                                                    	54	1	amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque	\N	4	2
+Carlynne Agronski                                                                                   	57	76	maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin	\N	3	3
+Joyous Buttrick                                                                                     	80	48	in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit	\N	3	4
+Gabriela Pover                                                                                      	64	94	congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis	\N	2	5
+Emelita McKibben                                                                                    	83	71	eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in	\N	3	6
+Kameko Cona                                                                                         	31	40	commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id	\N	4	7
+Hortense Betteridge                                                                                 	93	61	eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum	\N	1	8
+Ahmad Lavelle                                                                                       	100	66	vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci	\N	3	9
+Sandor Aucock                                                                                       	17	53	pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis	\N	4	10
+Riccardo Fahy                                                                                       	25	6	sit amet diam in magna bibendum imperdiet nullam orci pede venenatis	\N	3	11
+Juliann Dittson                                                                                     	30	21	nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet	\N	3	12
+Brandais Keirle                                                                                     	13	43	adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin	\N	1	13
+Britney Mayworth                                                                                    	5	54	consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo	\N	1	14
+Cinda Hellmore                                                                                      	49	15	suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae	\N	3	15
+Karine Tandy                                                                                        	75	22	odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam	\N	1	16
+Krishna Ducker                                                                                      	19	44	odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac	\N	1	17
+Michel Swanbourne                                                                                   	21	22	magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur	\N	3	18
+Mario Lambricht                                                                                     	47	6	aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec	\N	4	19
+Lawry Fann                                                                                          	40	43	morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis	\N	1	20
+Husein Lambregts                                                                                    	63	15	purus sit amet nulla quisque arcu libero rutrum ac lobortis vel	\N	1	21
+Ranice Rumke                                                                                        	97	49	metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam	\N	3	22
+Charis Fearby                                                                                       	72	96	faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit	\N	3	23
+Jourdain Issacoff                                                                                   	21	81	ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio	\N	2	24
+Rachelle Kirimaa                                                                                    	27	31	tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras	\N	2	25
+Josias Philipp                                                                                      	60	96	rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed	\N	2	26
+Tally Duinbleton                                                                                    	54	62	justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum	\N	3	27
+Noel Waren                                                                                          	85	100	amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum	\N	3	28
+Nicolis Kairns                                                                                      	43	97	amet lobortis sapien sapien non mi integer ac neque duis	\N	3	29
+Torey Rilton                                                                                        	21	88	nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor	\N	1	30
+Humfrey Foulstone                                                                                   	75	93	sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis	\N	1	31
+Myra Rowbotham                                                                                      	63	98	quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci	\N	1	32
+Ivory Wickey                                                                                        	91	85	curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum	\N	2	33
+Clementius Robb                                                                                     	50	8	quis orci eget orci vehicula condimentum curabitur in libero ut	\N	2	34
+Egbert Fryd                                                                                         	80	61	erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus	\N	1	35
+Putnam Ralston                                                                                      	31	62	aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie	\N	3	36
+Gabie Glison                                                                                        	47	3	ligula suspendisse ornare consequat lectus in est risus auctor sed	\N	1	37
+Ruttger Cardinal                                                                                    	65	11	non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at	\N	3	38
+Waverly Russo                                                                                       	16	26	non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit	\N	4	39
+Garrett Nettleship                                                                                  	75	61	diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales	\N	2	40
+Maureen McFarlan                                                                                    	49	89	hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget	\N	3	41
+Freddie Robken                                                                                      	7	51	eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in	\N	4	42
+Findley Braywood                                                                                    	64	21	tortor id nulla ultrices aliquet maecenas leo odio condimentum id	\N	3	43
+Frank Klyner                                                                                        	31	84	posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend	\N	2	44
+Sashenka Matteucci                                                                                  	96	28	consequat metus sapien ut nunc vestibulum ante ipsum primis in	\N	2	45
+Cathi Castelyn                                                                                      	51	60	elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper	\N	1	46
+Doralia Boarder                                                                                     	42	21	venenatis non sodales sed tincidunt eu felis fusce posuere felis sed	\N	1	47
+Gustavus Murty                                                                                      	76	78	pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit	\N	1	48
+Ky Sharville                                                                                        	99	25	consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci	\N	3	49
+Kissie Millership                                                                                   	5	49	phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla	\N	2	50
+Konstance Bubb                                                                                      	89	98	augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse	\N	4	51
+Aurelea Baldinotti                                                                                  	15	15	amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper	\N	3	52
+Karol Bardsley                                                                                      	96	31	morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl	\N	4	53
+Willa Madden                                                                                        	53	62	vestibulum quam sapien varius ut blandit non interdum in ante	\N	1	54
+Garrett Vassano                                                                                     	49	98	eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus	\N	2	55
+Caryl Shipston                                                                                      	81	20	tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante	\N	4	56
+Clemmy Grattage                                                                                     	53	17	justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate	\N	1	57
+Demeter Paolotto                                                                                    	21	83	vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia	\N	1	58
+Donna Phythien                                                                                      	98	83	a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie	\N	1	59
+Kinny Paunsford                                                                                     	37	53	sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris	\N	3	60
+Amalie Pardon                                                                                       	38	7	in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes	\N	2	61
+Aprilette Simounet                                                                                  	11	57	in hac habitasse platea dictumst morbi vestibulum velit id pretium	\N	3	62
+Aveline Beebis                                                                                      	59	14	elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum	\N	1	63
+Alayne Faltin                                                                                       	80	33	sit amet cursus id turpis integer aliquet massa id lobortis convallis	\N	1	64
+Jacquelyn Atwater                                                                                   	46	18	tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat	\N	4	65
+Arlene Tennick                                                                                      	9	1	etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla	\N	2	66
+Olympia Krysztofiak                                                                                 	23	16	nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede	\N	4	67
+Whittaker Vasyukhnov                                                                                	98	89	volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus	\N	4	68
+Tammie Christer                                                                                     	73	42	velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus	\N	2	69
+Alina Beachamp                                                                                      	83	1	sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non	\N	3	70
+Margery MacGarvey                                                                                   	54	55	vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem	\N	1	71
+Lizbeth Fernez                                                                                      	80	99	orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt	\N	3	72
+Tiffani Gaskall                                                                                     	31	86	aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum	\N	3	73
+Maxie Brackpool                                                                                     	73	6	parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et	\N	3	74
+Mikey Marklund                                                                                      	93	5	sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut	\N	3	75
+Derwin Dowey                                                                                        	66	98	nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi	\N	3	76
+Hanan Diess                                                                                         	18	16	convallis eget eleifend luctus ultricies eu nibh quisque id justo sit	\N	1	77
+Anatole Grimshaw                                                                                    	47	34	luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum	\N	1	78
+Nickolaus Birks                                                                                     	56	29	vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a	\N	4	79
+Konstantine Wakeling                                                                                	76	27	nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis	\N	1	80
+Harald Paulucci                                                                                     	29	1	sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra	\N	3	81
+Pat Threlfall                                                                                       	9	22	pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis	\N	3	82
+Artair Vellden                                                                                      	1	19	in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum	\N	1	83
+Joye Fanstone                                                                                       	54	7	pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut	\N	2	84
+Leodora Gambie                                                                                      	66	70	habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer	\N	4	85
+Elset Priestner                                                                                     	47	84	quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci	\N	2	86
+Samson Owttrim                                                                                      	76	96	nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo	\N	3	87
+Drusie Shivell                                                                                      	75	73	aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede	\N	2	88
+Neely Sell                                                                                          	78	15	potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla	\N	3	89
+Roda Pietersen                                                                                      	1	2	odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi	\N	3	90
+Leonidas Gilardoni                                                                                  	87	76	molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec	\N	1	91
+Beckie Gove                                                                                         	97	12	metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque	\N	3	92
+Natassia Faithfull                                                                                  	46	35	vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia	\N	3	93
+Lauralee Crimp                                                                                      	4	97	congue eget semper rutrum nulla nunc purus phasellus in felis donec	\N	4	94
+Othelia Wedmore.                                                                                    	2	60	in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in hac	\N	4	95
+Suzi Dominka                                                                                        	23	88	ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend	\N	4	96
+Thomasa Geck                                                                                        	1	66	in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus	\N	1	97
+Loralyn Adamowicz                                                                                   	97	10	ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris	\N	3	98
+Sydney McLice                                                                                       	43	5	elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in	\N	3	99
+Evey Chupin                                                                                         	52	35	aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies	\N	1	100
+\.
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.categories_id_seq', 3, true);
+
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.customers_id_seq', 20, true);
+
+
+--
+-- Name: farms_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.farms_id_seq', 100, true);
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.products_id_seq', 100, true);
+
+
+--
+-- Name: categories categories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: customers customers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.customers
+    ADD CONSTRAINT customers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: farms farms_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.farms
+    ADD CONSTRAINT farms_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
